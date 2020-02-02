@@ -2,3 +2,22 @@
   font-family: sans-serif;
   text-align: center;
 }
+
+.row {
+  display: flex;
+  /*justify-content: space-evenly;*/
+  width: 400px;
+}
+.cell {
+  height: 2px;
+  width: 2px;
+  background-color: #ededed;
+  border: 1px medium #ededed;
+}
+.active {
+  background-color: #000;
+  border: 2px medium #ededed;
+}
+.flex {
+  display: flex;
+}

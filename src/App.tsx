@@ -9,6 +9,8 @@ import { getRowCollFromCellID } from "./helpers/getRowCollFromCellID";
 import { calcNeighbourCount } from "./helpers/calcNeighbourCount";
 import { tsIncludes } from "./helpers/tsIncludes";
 
+import ButtonWrap from "./components/ButtonWrap";
+
 export default function App() {
   const initialState = createIniitialGrid(GRID_ROWS, GRID_COLS);
   const [grid, setGrid] = React.useState(initialState);
@@ -42,7 +44,11 @@ export default function App() {
     return;
   }, []);
 
-  const updateGridArray = (grid: object, activeCells, array) => {
+  const updateGridArray = (
+    grid: object,
+    activeCells: number[],
+    array: { row: number; col: number }[]
+  ) => {
     let newGrid: object = grid;
     let newActiveCells = activeCells;
     for (let i = 0; i < array.length; i++) {
@@ -94,36 +100,44 @@ export default function App() {
         <li>Click Next Generation to watch the cells evolve</li>
         <li>Click Reset to reset the board</li>
       </ul>
-      <div>
-        {Object.keys(grid).map((row, rowIndex) => {
-          return (
-            <div key={row} className="row">
-              {Object.keys(grid[row]).map((col, colIndex) => (
-                <div
-                  key={col}
-                  className={
-                    grid[row][col] === "active" ? "active cell" : "cell"
-                  }
-                  onClick={() =>
-                    updateGridCell(grid, activeCells, rowIndex, colIndex)
-                  }
-                />
-              ))}
-            </div>
-          );
-        })}
-      </div>
-      <div>
-        {cellsAlive ? (
-          <React.Fragment>
-            <button onClick={() => startCells()}>Add</button>
-            <button onClick={() => stopCells()}>Stop</button>
-            <button onClick={() => setNextGen(true)}>Next Generation</button>
-          </React.Fragment>
-        ) : (
-          <button onClick={() => startCells()}>Start</button>
-        )}
-        {cellsAlive ? <button onClick={() => resetGrid()}>Reset</button> : null}
+      <div className="flex flex-col">
+        <div className="marginAuto">
+          {Object.keys(grid).map((row, rowIndex) => {
+            return (
+              <div key={row} className="row">
+                {Object.keys(grid[row]).map((col, colIndex) => (
+                  <div
+                    key={col}
+                    className={
+                      grid[row][col] === "active" ? "active cell" : "cell"
+                    }
+                    onClick={() =>
+                      updateGridCell(grid, activeCells, rowIndex, colIndex)
+                    }
+                  />
+                ))}
+              </div>
+            );
+          })}
+        </div>
+        <div className={"marginAuto marginTB10"}>
+          {cellsAlive ? (
+            <React.Fragment>
+              <ButtonWrap action={startCells} label="Add" sideMargin={true} />
+              <ButtonWrap action={stopCells} label="Stop" sideMargin={true} />
+              <ButtonWrap
+                action={() => setNextGen(true)}
+                label="Next Generation"
+                sideMargin={true}
+              />
+            </React.Fragment>
+          ) : (
+            <ButtonWrap action={startCells} label="Start" sideMargin={false} />
+          )}
+          {cellsAlive ? (
+            <ButtonWrap action={resetGrid} label="Reset" sideMargin={true} />
+          ) : null}
+        </div>
       </div>
     </div>
   );

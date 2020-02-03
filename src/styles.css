@@ -5,8 +5,7 @@
 
 .row {
   display: flex;
-  /*justify-content: space-evenly;*/
-  width: 400px;
+  /*justify-content: space-evenly; width: 400px;*/
 }
 .cell {
   height: 2px;
@@ -20,6 +19,23 @@
 }
 .flex {
   display: flex;
+}
+.flex-col {
+  flex-direction: column;
+}
+.flex-start {
+  justify-content: flex-start;
+}
+.marginAuto {
+  margin: 0 auto;
+}
+.marginTB10 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.marginLR5 {
+  margin-left: 5px;
+  margin-right: 5px;
 }
 ul {
   text-align: left;

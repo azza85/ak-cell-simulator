@@ -21,3 +21,6 @@
 .flex {
   display: flex;
 }
+ul {
+  text-align: left;
+}

@@ -1,6 +1,6 @@
 # ak-cell-simulator
 
-Created with CodeSandbox
+[![Build Status](https://travis-ci.org/azza85/ak-cell-simulator.svg?branch=master)](https://travis-ci.org/azza85/ak-cell-simulator)
 
 ## Installation Instructions
 

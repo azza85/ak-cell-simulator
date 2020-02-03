@@ -50,7 +50,7 @@ export default function App() {
     array: { row: number; col: number }[]
   ) => {
     let newGrid: object = grid;
-    let newActiveCells = activeCells;
+    let newActiveCells: number[] = activeCells;
     for (let i = 0; i < array.length; i++) {
       newGrid = updateGrid(newGrid, array[i].row, array[i].col);
       newActiveCells = newActiveCells.concat(
@@ -58,7 +58,7 @@ export default function App() {
       );
       if (i === array.length - 1) {
         setGrid(newGrid);
-        setActiveCells(newActiveCells);
+        setActiveCells(newActiveCells); // tslint:disable-line
       }
     }
   };

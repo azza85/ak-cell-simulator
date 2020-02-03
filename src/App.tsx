@@ -16,7 +16,7 @@ export default function App() {
   const [grid, setGrid] = React.useState(initialState);
   const [cellsAlive, setCellsAlive] = React.useState(false);
   const [isNextGen, setNextGen] = React.useState(false);
-  const [activeCells, setActiveCells] = React.useState([]);
+  const [activeCells, setActiveCells] = React.useState<number[]>([]);
 
   const resetGrid = () => {
     setGrid(initialState);
@@ -58,7 +58,8 @@ export default function App() {
       );
       if (i === array.length - 1) {
         setGrid(newGrid);
-        setActiveCells(newActiveCells); // tslint:disable-line
+        const tsActiveCells = newActiveCells;
+        setActiveCells(tsActiveCells);
       }
     }
   };
